@@ -2,129 +2,185 @@
 
 A personal portfolio built with React, Vite, Tailwind CSS, and Framer Motion.
 
-## Getting started
+## Getting Started
 
-**Requirements:** [Node.js](https://nodejs.org) version 18 or later.
+### Requirements
+
+* [Node.js](https://nodejs.org/) version 18 or later
+* Git (optional, for version control)
+
+### Run Locally
+
+1. Clone or download the project.
+2. Open the project folder in VS Code.
+3. Open the terminal and run:
 
 ```bash
-# 1. Install dependencies
 npm install
-
-# 2. Start the local dev server
 npm run dev
 ```
 
-Then open the URL shown in the terminal (usually `http://localhost:5173`).
+4. Open the URL shown in your terminal, usually `http://localhost:5173`.
 
-## Building for production
+## Building for Production
+
+Create an optimized production build:
 
 ```bash
 npm run build
 ```
 
-This creates an optimized, static version of the site in the `dist/` folder.
-Preview it locally with:
+This creates the production-ready files inside the `dist/` folder.
+
+To preview the production build locally, run:
 
 ```bash
 npm run preview
 ```
 
-## Where to edit things
+## Where to Edit Portfolio Content
 
-Almost everything on the site is driven by one file:
+Most portfolio content is managed in:
 
-**`src/data/portfolio.js`**
+`src/data/portfolio.js`
 
-Edit this file to update:
-- Your name, title, tagline, college, and location
-- Your email and resume link
-- GitHub / LinkedIn URLs
-- About section text and quick facts
-- Skills (grouped by category)
-- Projects (name, description, tags, GitHub/demo links, image)
-- Education entries
-- Experience / internships (add an object to the `experience` array)
-- Achievements (add an object to the `achievements` array)
-- "Currently learning" list
-- Navbar links
+You can update:
 
-You generally will not need to touch any file inside `src/components/` for
-routine content updates — the components simply read from this data file.
+* Your name, title, tagline, college, and location
+* Email address and resume link
+* GitHub and LinkedIn profile URLs
+* About section and personal details
+* Skills grouped by category
+* Projects, descriptions, technologies, GitHub links, demo links, and images
+* Education details
+* Experience and internship details
+* Achievements
+* Currently learning section
+* Navigation links
 
-### Adding or changing your profile photo
+For regular content updates, you generally do not need to edit the files inside `src/components/`.
 
-1. Replace `public/images/profile.jpg` with your new photo (keep the same
-   filename, or update the `photo` path in `src/data/portfolio.js`).
-2. A portrait-oriented photo (taller than it is wide) works best with the
-   current layout, but any reasonably sized photo will be cropped cleanly.
+## Adding or Changing Your Profile Photo
 
-### Adding project screenshots
+1. Replace `public/images/profile.jpg` with your new photo.
+2. Keep the same filename, or update the `photo` path in `src/data/portfolio.js`.
+3. A portrait-oriented photo works well with the current layout.
 
-1. Add your image to `public/images/` (for example `public/images/studyflow.png`).
-2. In `src/data/portfolio.js`, set that project's `image` field to the path,
-   e.g. `image: '/images/studyflow.png'`.
-3. To have the screenshot show up on the card, add an `<img>` using
-   `project.image` inside `src/components/Projects.jsx` (a `image` field is
-   already reserved in the data for this).
+## Adding Project Screenshots
 
-### Adding a new project
+1. Add your screenshot to `public/images/`, for example `public/images/studyflow.png`.
+2. Open `src/data/portfolio.js`.
+3. Set the relevant project's `image` field to the image path:
+
+```js
+image: '/images/studyflow.png'
+```
+
+4. Ensure the project component displays the image using `project.image`.
+
+## Adding a New Project
 
 Add a new object to the `projects` array in `src/data/portfolio.js`:
 
 ```js
 {
-  name: 'Project name',
-  description: 'One or two sentences about what it does.',
-  tags: ['React', 'Node.js'],
-  github: 'https://github.com/your-username/repo',
-  demo: '', // optional live link
-  image: '', // optional screenshot path
+  name: 'Project Name',
+  description: 'A brief description of the project.',
+  tags: ['React', 'Java'],
+  github: 'https://github.com/your-username/repository',
+  demo: '',
+  image: ''
 }
 ```
 
-### Showing Experience or Achievements sections
+Replace the example information with your actual project details.
 
-Both sections are hidden automatically when their arrays are empty (so
-nothing fake ever appears). As soon as you add an entry to `experience` or
-`achievements` in `src/data/portfolio.js`, the matching section appears on
-the site automatically.
+## Experience and Achievements
 
-## Project structure
+The Experience and Achievements sections are designed to remain hidden when their corresponding arrays are empty.
 
-```
+To display these sections, add your actual experience or achievement entries to the relevant arrays in `src/data/portfolio.js`.
+
+## Project Structure
+
+```text
 portfolio/
 ├── public/
-│   ├── images/        → profile photo & project screenshots
-│   └── favicon/        → site favicon
+│   ├── images/
+│   │   └── profile.jpg
+│   ├── favicon/
+│   └── Srujan B S - Resume.pdf
 ├── src/
-│   ├── components/     → one component per section (Navbar, Hero, About, …)
+│   ├── components/
+│   │   ├── Navbar.jsx
+│   │   ├── Hero.jsx
+│   │   ├── About.jsx
+│   │   ├── Education.jsx
+│   │   ├── Skills.jsx
+│   │   ├── Projects.jsx
+│   │   ├── Experience.jsx
+│   │   ├── Achievements.jsx
+│   │   ├── Learning.jsx
+│   │   ├── Contact.jsx
+│   │   └── Footer.jsx
 │   ├── data/
-│   │   └── portfolio.js  → all editable content lives here
-│   ├── App.jsx          → assembles the page from components
-│   ├── main.jsx         → React entry point
-│   └── index.css        → global styles & Tailwind setup
+│   │   └── portfolio.js
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── index.css
 ├── index.html
+├── package.json
+├── package-lock.json
 ├── tailwind.config.js
 ├── vite.config.js
-└── package.json
+└── README.md
 ```
 
-## Deploying
+## Technologies Used
 
-This is a static site, so it can be deployed anywhere that serves static
-files. Two easy free options:
+* React
+* Vite
+* JavaScript
+* Tailwind CSS
+* Framer Motion
+* HTML and CSS
+* Git and GitHub
 
-**Vercel**
-1. Push this project to a GitHub repository.
-2. Go to [vercel.com](https://vercel.com), import the repository.
-3. Framework preset: Vite. Leave build settings as default (`npm run build`,
-   output directory `dist`). Deploy.
+## Deployment
 
-**Netlify**
-1. Push this project to a GitHub repository.
-2. Go to [netlify.com](https://netlify.com), "Add new site" → import the
-   repository.
-3. Build command: `npm run build`. Publish directory: `dist`. Deploy.
+This is a frontend portfolio that can be deployed using a static hosting platform.
 
-You can also drag-and-drop the `dist/` folder (after running `npm run
-build`) directly onto Netlify's dashboard for a quick deploy without git.
+### Option 1: Vercel
+
+1. Push the project to your GitHub repository.
+2. Visit [Vercel](https://vercel.com/).
+3. Import your GitHub repository.
+4. Select Vite as the framework if it is not detected automatically.
+5. Use the following settings:
+
+   * Build command: `npm run build`
+   * Output directory: `dist`
+6. Click Deploy.
+
+### Option 2: Netlify
+
+1. Push the project to GitHub.
+2. Visit [Netlify](https://www.netlify.com/).
+3. Import your GitHub repository.
+4. Configure the build settings:
+
+   * Build command: `npm run build`
+   * Publish directory: `dist`
+5. Deploy the website.
+
+## Author
+
+**Srujan B S**
+
+Engineering Student | Aspiring Software Developer
+
+GitHub: [srujan7081-spec](https://github.com/srujan7081-spec)
+
+---
+
+Thank you for visiting my portfolio!
